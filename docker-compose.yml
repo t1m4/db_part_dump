@@ -1,0 +1,30 @@
+services:
+
+  app:
+    build:
+      context: .
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: admin
+      DB_PASSWORD: admin
+
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/src/app
+    command: >
+      sh -c "go test ./..."
+
+  db:
+    image: postgres:17.4
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - db:/var/lib/postgresql/data
+    command: ["postgres", "-c", "log_statement=all"]
+
+volumes:
+  db:

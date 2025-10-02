@@ -1,0 +1,26 @@
+database:
+  db_type: postgres
+  host: localhost
+  port: 5432
+  user: ruslan
+  password: ruslan
+  name: db_part_dump
+  max_idle_conns: 10
+  max_open_conns: 10
+  conn_max_lifetime: "1h"
+  ssl_mode: require
+
+settings:
+  output: ./backups/test.sql
+  format: sql
+  schema_name: alpha
+  direction: outgoing
+  include_incoming_tables:
+    - users
+    - orders
+  tables:
+    - name: user_payment_methods
+      filters:
+        - name: id
+          value: 1, 2, 3
+          # value: 1, 2, 3) and (1 = 1

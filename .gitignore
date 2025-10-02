@@ -1,0 +1,6 @@
+.env
+pkg/
+dumps/
+project.vim
+backups/
+coverage*

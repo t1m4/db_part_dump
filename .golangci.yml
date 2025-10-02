@@ -1,0 +1,17 @@
+version: "2"
+
+linters:
+  enable:
+    - govet
+    - errcheck
+    - ineffassign
+    - staticcheck
+    - unused
+    - gocyclo
+    - predeclared
+  settings:
+    govet:
+      enable:
+        - shadow
+  lll:
+    line-length: 120
